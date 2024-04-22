@@ -1,33 +1,32 @@
 import { Injectable } from '@angular/core';
 import {WeatherService} from "./weather.service";
+import { BehaviorSubject, Subject } from 'rxjs';
 
 export const LOCATIONS : string = "locations";
 
 @Injectable()
 export class LocationService {
 
-  locations : string[] = [];
+  locations$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
-  constructor(private weatherService : WeatherService) {
+  constructor() {
     let locString = localStorage.getItem(LOCATIONS);
     if (locString)
-      this.locations = JSON.parse(locString);
-    for (let loc of this.locations)
-      this.weatherService.addCurrentConditions(loc);
+      this.locations$.next(JSON.parse(locString));
   }
 
   addLocation(zipcode : string) {
-    this.locations.push(zipcode);
-    localStorage.setItem(LOCATIONS, JSON.stringify(this.locations));
-    this.weatherService.addCurrentConditions(zipcode);
+    this.locations$.next([...this.locations$.getValue(), zipcode]);
+    localStorage.setItem(LOCATIONS, JSON.stringify(this.locations$.getValue()));
   }
 
   removeLocation(zipcode : string) {
-    let index = this.locations.indexOf(zipcode);
+    const locations = [...this.locations$.getValue()]
+    let index = this.locations$.getValue().indexOf(zipcode);
     if (index !== -1){
-      this.locations.splice(index, 1);
-      localStorage.setItem(LOCATIONS, JSON.stringify(this.locations));
-      this.weatherService.removeCurrentConditions(zipcode);
+      locations.splice(index, 1);
+      this.locations$.next(locations)
+      localStorage.setItem(LOCATIONS, JSON.stringify(locations));
     }
   }
 }

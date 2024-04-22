@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './main-page.component.html'
 })
 export class MainPageComponent {
-
 }
