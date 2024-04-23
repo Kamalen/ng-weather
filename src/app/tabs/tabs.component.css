@@ -1,0 +1,29 @@
+.Tabs {
+    padding: 8px;
+}
+
+.Tabs-Selector {
+    border-bottom: 1px solid green;
+}
+
+.Tabs-Content {
+    border: 1px solid green;
+}
+
+.Tabs-Selector-Header {
+    display: inline-block;
+    margin-left: 4px;
+    border: 1px solid green;
+    background-color: lightgreen;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.Tabs-Selector-Header.is-active {
+    background-color: #00b300;
+}
+
+.Tabs-Selector-Header-Close {
+    margin-left: 6px;
+    font-size: 10px;
+}

@@ -5,3 +5,6 @@
   display: flex;
   justify-content: space-between;
 }
+.well {
+  margin-bottom: 0px;
+}

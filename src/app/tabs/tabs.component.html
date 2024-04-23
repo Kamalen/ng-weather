@@ -1,0 +1,20 @@
+<div class="Tabs">
+    <!-- Displaying all tabs headers with close button -->
+    <div class="Tabs-Selector">
+        <div class="Tabs-Selector-Header" *ngFor="let tab of tabList" (click)="activeTab = tab" [class.is-active]="tab === activeTab">
+            <span class="Tabs-Selector-Header-Title">{{tab.title}}</span>
+            <span class="Tabs-Selector-Header-Close" (click)="closeTab(tab)">❌</span>
+        </div>
+        <div class="Tabs-Selector-Header" *ngIf="tabList.length == 0">
+            <span class="Tabs-Selector-Header-Title">No tabs to display</span>
+        </div>
+    </div>
+
+    <!-- Projecting the template of the current active tab -->
+    <div class="Tabs-Content">
+        <ng-container *ngIf="activeTab" [ngTemplateOutlet]="activeTab.templateRef"></ng-container>
+        <div *ngIf="!activeTab">
+            No active tab
+        </div>
+    </div>
+</div>
