@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SwPush, SwUpdate} from '@angular/service-worker';
-import {interval} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { LocationService } from './shared/services/location.service';
+import { WeatherService } from './shared/services/weather.service';
 import { pairwise, startWith } from 'rxjs/operators';
-import { difference } from './utils/array.utils';
-import { LocationService } from './location.service';
-import { WeatherService } from './weather.service';
+import { difference } from './shared/utils/array.utils';
 
 @Component({
   selector: 'app-root',

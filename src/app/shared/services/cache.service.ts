@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CacheData } from './cache-data.type';
+import { CacheData } from '../types/cache-data.type';
 
 @Injectable({
     providedIn: 'root'

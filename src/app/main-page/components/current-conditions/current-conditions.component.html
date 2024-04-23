@@ -18,7 +18,7 @@
                 </p>
             </div>
             <div>
-                <img [src]="weatherService.getWeatherIcon(location.data.weather[0].id)">
+                <img [src]="location.data.weather[0].id | weatherIcon">
             </div>
         </div>
     </tab>
